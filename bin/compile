@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 
 ENV_DIR=${3:-}
-build_dir=${1:-}
-npmrc="$(cat $ENV_DIR/NPMRC)"
+BUILD_DIR=${1:-}
+API_CLIENT_GITHUB_AUTH_TOKEN="$(cat $ENV_DIR/API_CLIENT_GITHUB_AUTH_TOKEN)"
 
-if [ "$npmrc" != "" ]; then
-	echo "-----> Using .npmrc from config var NPMRC"
-	echo "$npmrc" > "$build_dir/.npmrc"
+if [ "$API_CLIENT_GITHUB_AUTH_TOKEN" != "" ]; then
+	echo "-----> Using .npmrc to install packages from https://npm.pkg.github.com/mindfulchefuk"
+	echo "@mindfulchefuk:registry=https://npm.pkg.github.com/mindfulchefuk" > "$BUILD_DIR/.npmrc"
+	echo "//npm.pkg.github.com/:_authToken=$API_CLIENT_GITHUB_AUTH_TOKEN" >> "$BUILD_DIR/.npmrc"
+	echo "//npm.pkg.github.com/mindfulchefuk/:_authToken=$API_CLIENT_GITHUB_AUTH_TOKEN" >> "$BUILD_DIR/.npmrc"
 	exit 0
 fi
