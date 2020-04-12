@@ -5,9 +5,9 @@ BUILD_DIR=${1:-}
 API_CLIENT_GITHUB_AUTH_TOKEN="$(cat $ENV_DIR/API_CLIENT_GITHUB_AUTH_TOKEN)"
 
 if [ "$API_CLIENT_GITHUB_AUTH_TOKEN" != "" ]; then
-	echo "-----> Using .npmrc to install packages from https://npm.pkg.github.com/mindfulchefuk"
-	echo "@mindfulchefuk:registry=https://npm.pkg.github.com/mindfulchefuk" > "$BUILD_DIR/.npmrc"
+	echo "-----> Using .npmrc to install packages from https://npm.pkg.github.com/hamburgueria60"
+	echo "@hamburgueria60:registry=https://npm.pkg.github.com/hamburgueria60" > "$BUILD_DIR/.npmrc"
 	echo "//npm.pkg.github.com/:_authToken=$API_CLIENT_GITHUB_AUTH_TOKEN" >> "$BUILD_DIR/.npmrc"
-	echo "//npm.pkg.github.com/mindfulchefuk/:_authToken=$API_CLIENT_GITHUB_AUTH_TOKEN" >> "$BUILD_DIR/.npmrc"
+	echo "//npm.pkg.github.com/hamburgueria60/:_authToken=$API_CLIENT_GITHUB_AUTH_TOKEN" >> "$BUILD_DIR/.npmrc"
 	exit 0
 fi
